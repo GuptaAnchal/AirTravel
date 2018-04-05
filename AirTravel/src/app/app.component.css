@@ -72,6 +72,7 @@ div.info-box{
 
 @media screen and (max-width: 600px) {
 
+/* Display header */
 .header {
     grid-area: header;
     top: 0;
@@ -91,6 +92,7 @@ div.info-box{
     font-size: 25px;
 }
 
+/*Display footer */
 .footer{
   grid-area: footer;
   top: 0;
@@ -105,7 +107,7 @@ div.info-box{
   color:white;
   text-transform: uppercase;
 }
-
+/*Display search box */
 div.search-box{
   grid-area: search-box;
   grid-area: search-box;
@@ -113,12 +115,14 @@ div.search-box{
   border-right: 1px solid #dee2e6;
 }
 
+/*Display city info */
 div.info-box{
   grid-area: info-box;
   width:100%;
   align-content: center;
 }
-
+ 
+/* Display data card */
 div.flight-card{
   grid-area: flight-card;
   width:100%;
@@ -128,7 +132,6 @@ div.flight-card{
   background-position: center;
   transition: background-image 0.5s linear;
   -webkit-transition: background-image 0.5s linear;
-  
 }
 
 	.data-section {
@@ -148,8 +151,7 @@ div.flight-card{
   }
 }
 
-/* FLying Animation */
-
+/* Flight Animation */
 div.book-flight{
   position: fixed;
   font-size: 50px;
