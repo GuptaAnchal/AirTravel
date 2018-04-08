@@ -16,7 +16,7 @@ export class SearchTabComponent implements OnInit {
   public sameCity: boolean = false;
   public isSubmitted: boolean = false;
   public refinePrice: number = 10000;
-  constructor(private _searchService: SearchService) { }
+  constructor(public _searchService: SearchService) { }
 
   ngOnInit() {
     this.refinedPriceOutput.emit(this.refinePrice);

@@ -1,5 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
+import { HttpModule } from '@angular/http';
+import { SearchService } from '../../services/search.service';
 import { FlightInfoBoxComponent } from './flight-info-box.component';
 
 describe('FlightInfoBoxComponent', () => {
@@ -8,7 +9,9 @@ describe('FlightInfoBoxComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ FlightInfoBoxComponent ]
+      imports: [HttpModule],
+      declarations: [ FlightInfoBoxComponent ],
+      providers: [SearchService]
     })
     .compileComponents();
   }));
@@ -16,10 +19,15 @@ describe('FlightInfoBoxComponent', () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(FlightInfoBoxComponent);
     component = fixture.componentInstance;
+    component._searchService.details={
+        departureCity: 'chennai', arrivalCity: 'mumbai', oneWay: true, refine: 10000, departDate: '01/04/2018', returnDate: '', passengersCount: 1
+      },
+    component._searchService.dataFound= true;
     fixture.detectChanges();
   });
 
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
 });
