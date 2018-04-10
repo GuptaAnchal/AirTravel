@@ -12,6 +12,9 @@ export class SearchTabComponent implements OnInit {
   @Output() refinedPriceOutput: EventEmitter<number> = new EventEmitter<number>();
   @Output() submitOutput: EventEmitter<boolean> = new EventEmitter<boolean>();
 
+  /**
+   * Page variables
+   */
   public invalidForm: boolean = false;
   public sameCity: boolean = false;
   public isSubmitted: boolean = false;
@@ -20,19 +23,26 @@ export class SearchTabComponent implements OnInit {
 
   ngOnInit() {
     this.refinedPriceOutput.emit(this.refinePrice);
+    /**
+     * Get all the cities available on initialization of component.
+     */
     this._searchService.citiesList();
     this._searchService.details =   {
       departureCity: 'select', arrivalCity: 'select', departDate: '', returnDate: '', oneWay: true, passengersCount: 1
     }
   }
-
-
+  /**
+   * select the trip type- oneWay or twoWay
+   */
   public tripType(){
     this._searchService.details.oneWay= !this._searchService.details.oneWay;
     this._searchService.dataFound = false;
     this.submitOutput.emit(false);
   }
-    
+  /**
+   * Check validation of form and proceed for search
+   * @param formInputs 
+   */
   public onSubmit(formInputs): void {
       if (formInputs.form.valid && this._searchService.details.departureCity!== this._searchService.details.arrivalCity) {
       this.invalidForm = false;
@@ -48,7 +58,9 @@ export class SearchTabComponent implements OnInit {
       this.invalidForm = true;
 
   }
-
+  /**
+   * Search for flights based on input provided.
+   */
   public performSearch(): void {
     if (this._searchService.details.oneWay) 
       this._searchService.oneWayFlights = this._searchService.searchFlight(this._searchService.details);
@@ -65,7 +77,11 @@ export class SearchTabComponent implements OnInit {
     this._searchService.twoWayFlights = this._searchService.searchFlight(twoWayDetails);
     }
   }
-
+  /**
+   * On change of slider event
+   * autmatically detect flights in range
+   * @param event 
+   */
   sliderChangeEvent(event) {
     this.refinedPriceOutput.emit(this.refinePrice);
   }

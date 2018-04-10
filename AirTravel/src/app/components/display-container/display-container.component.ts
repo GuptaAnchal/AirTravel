@@ -9,6 +9,9 @@ import { Flights } from '../../interfaces/flightDetails';
 export class DisplayContainerComponent implements OnInit {
   @Output() fly = new EventEmitter<boolean>();
   @Input() refinedPrice: number = 10000;
+  /**
+   * Page variables
+   */
   showLoader: boolean = true;
   public fly1Way: Flights;
   public fly2Way: Flights;
@@ -29,12 +32,17 @@ export class DisplayContainerComponent implements OnInit {
     this.fly2Way= input;
     this.sum( this.fly2Way.amount);
   }
-
+  /**
+   * Adding the cost for two way flights 
+   */
   sum(num:any){
     this.total = this.total + parseFloat(num);
     console.log("amount", this.total)
   }
 
+  /**
+   * Click handler for book button
+   */
    public bookThisFlight() {
     this.fly.emit(true);
   }

@@ -9,6 +9,9 @@ import 'rxjs/add/operator/toPromise';
   const apiUrl = `./assets/json-data/data.json`;
 @Injectable()
 export class SearchService {
+ /**
+ * Service variables common for all components
+ */
   public originCities: string[];
   public destinationCities: string[];
   public flightDetails: Flights[];
@@ -18,7 +21,9 @@ export class SearchService {
   private errorMessage:any = '';
   public dataFound: boolean = false;
   constructor(private http: Http) { }
-
+ /**
+ * Fetch data from service 
+ */
   public citiesList(){
     this.getData()
             .then(
@@ -29,7 +34,9 @@ export class SearchService {
                 );
 
   }
-
+ /**
+ * Filter the departure cities and arrival cities
+ */
     public getCitiesList(flightData: any){
     const allOriginCities: string[] = [];
     const allDestnCities: string[] = [];
@@ -45,7 +52,9 @@ export class SearchService {
       return index === originalArr.indexOf(x);
     });
   }
-
+ /**
+ * Service function to fetch data fron JSON
+ */
    public getData (): Promise<Flights[]> {
         return this.http.get(apiUrl)
             .toPromise()
@@ -64,15 +73,22 @@ export class SearchService {
         console.error(errMsg); 
         return Observable.throw(errMsg);
     }
-
+ /**
+ * Search for availablity of flight from JSON data
+ * @param searchParams;
+ */
    public searchFlight(searchParams: BookingDetails): Flights[] {
      return this.getMatchingFlights(this.flightDetails, searchParams);
 }
-
-  private getMatchingFlights(sortedFlightData: any, searchParams: BookingDetails): Flights[] {
+  /**
+   * Returns a new array of matching items based on search.
+   * @param flightData;
+   * @param searchParams;
+   */
+  private getMatchingFlights(flightData: any, searchParams: BookingDetails): Flights[] {
     const filteredItmes: Flights[] = [];
     this.dataFound = false;
-    sortedFlightData.flights.map((x) => {
+    flightData.flights.map((x) => {
       if (Date.parse(x.date.split(' ')[0]) === Date.parse(searchParams.departDate) && x.departureCity === searchParams.departureCity
         && x.arrivalCity === searchParams.arrivalCity) {
         this.dataFound = true;

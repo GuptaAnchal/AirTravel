@@ -1,9 +1,14 @@
+<!--To display city info and flight date -->
 <div style="padding: 15px;" >
   <app-flight-info-box></app-flight-info-box>
 </div>
+
+<!--To display loader on form submit-->
 <div *ngIf="showLoader" class="center-loader">
 	<app-loader></app-loader>
 </div>
+
+<!--To display one way flight details available for the current selection-->
 <div *ngIf="!showLoader">
 <div class="align" *ngIf="_searchService.details.oneWay && _searchService.dataFound">
 	<div style="padding:15px" *ngFor="let flight of _searchService.oneWayFlights | orderBy | refineSearch: refinedPrice">
@@ -22,6 +27,8 @@
 		</div>
 	</div>
 </div>
+
+<!--To display two way flight details available for the current selection-->
 <div class="info" *ngIf="!_searchService.details.oneWay && _searchService.dataFound && fly1Way!=undefined && fly2Way!=undefined ">
 		<div class="flex-row">
 			<div style="padding-top: 7px;"><b>{{fly1Way.flightNo}}</b></div>
@@ -77,6 +84,8 @@
 			</div>
 	</div>
 </div>
+
+<!--To display error card when no flight found for current cities selection-->
 <div *ngIf="!_searchService.dataFound">
 	<app-error-card></app-error-card>
 </div>

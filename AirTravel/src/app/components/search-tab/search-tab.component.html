@@ -1,10 +1,11 @@
-<div class="tab">
+<<!-- Oneway/Twoway selector tab -->
+  div class="tab">
   <button id="oneway" class="tablinks" [ngClass]="{'active':_searchService.details.oneWay}" (click)="tripType()"><b>One Way</b></button>
   <button id="twoway" class="tablinks" [ngClass]="{'active':!_searchService.details.oneWay}"(click)="tripType()"><b>Return</b></button>
 </div>
 
 <div id="content">
-
+<!--Form for flight search-->
     <form (ngSubmit)="onSubmit(bookingDetailsForm)" #bookingDetailsForm="ngForm" style="margin-top: 15px;">
 
           <select [(ngModel)]="_searchService.details.departureCity" required [ngModelOptions]="{standalone: true}" id="departureCity" name="departureCity" #departureCity="ngModel" class="form-control">
@@ -59,6 +60,7 @@
 
     </form>
 
+<!--To refine the flight data as per price range-->
     <div class ="refine-data" *ngIf="isSubmitted && _searchService.dataFound">
           <p style="font-weight: 700;font-size: 15px;">Price Range</p>
           <p class="range"><span style="padding-left: 3px;">1000</span><span style="float: right;padding-right: 30px;">{{refinePrice}}</span></p>

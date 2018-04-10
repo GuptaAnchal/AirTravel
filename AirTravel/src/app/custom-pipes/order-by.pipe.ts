@@ -5,7 +5,9 @@ import { Flights } from '../interfaces/flightDetails'
   pure: false
 })
 export class OrderByPipe implements PipeTransform {
-
+  /**
+   * Sort the data based on price
+  */
   transform(value: Flights[], args?: any): any {
        
        if (value !== undefined) {    

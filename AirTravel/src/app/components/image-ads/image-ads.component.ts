@@ -16,6 +16,10 @@ export class ImageAdsComponent implements OnInit {
       this.moveSlides();
     }, 2000);
   }
+
+  /**
+   * For changing the slides
+   */
   moveSlides() {
     this.showImage[this.i % 3] = 'block';
     this.showImage[(this.i + 1) % 3] = 'none';

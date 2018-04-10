@@ -1,10 +1,13 @@
+/*For showing one way flight details*/
 .align{
 	display: flex;
-  flex-direction: column;
+    flex-direction: column;
 	padding-top: 40px;
 	padding-left: 10px;
 	width: 100%;
 }
+
+/*For showing two way flight details*/
 .align-row{
 	display: flex;
   flex-direction: row;
@@ -38,6 +41,8 @@
     justify-content: space-between;
     flex-direction: row;
 }
+
+/*For book button*/
 input[type='submit']{
     width:100%;
     padding: 5px;
@@ -79,6 +84,14 @@ input[type='submit']:hover{
     color: black;
 }
 
+.center-loader {
+  display: flex;
+  height:75vh;
+  justify-content: center;
+  align-items: center;
+}
+
+/*For responsive display*/
 @media screen and (max-width: 600px) {
 .flex-row{
     display: flex;
@@ -101,10 +114,3 @@ input[type='submit']:hover{
 }
 }
 
-
-.center-loader {
-  display: flex;
-  height:75vh;
-  justify-content: center;
-  align-items: center;
-}

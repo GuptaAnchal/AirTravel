@@ -18,7 +18,9 @@ export class AppComponent {
   public setDisplay(event) {
     this.display = event;
   }
-
+  /**
+   * Animation on book click
+   */
   public updateFlying(fly: boolean) {
     this.fly = fly;
   }

@@ -1,10 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { Flights } from '../interfaces/flightDetails';
 
-
 /**
  * Shows refined flight results based on the price.
- * Takes price limit as arguement.
+ * Takes price limit as argument.
  */
 @Pipe({ name: 'refineSearch' })
 export class RefineByPrice implements PipeTransform {
